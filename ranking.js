@@ -1,3 +1,4 @@
+// this is not currently used, since the array model provides a better indication of progress
 const initialScores = {
   "MAX": 1500,
   "GRACEY": 1500,
@@ -16,6 +17,7 @@ const initialScores = {
   "CARMEN": 1500
 }
 
+// each player starts with 1500 score. Subsequent wins/losses will be pushed to the end of this array
 const initialScoresArray = {
   "MAX": [1500],
   "GRACEY": [1500],
@@ -46,15 +48,18 @@ const calculateTournamentRanking = (playerA, playerB, scoreA, scoreB, round) => 
   // In round 1, the tournamentMultiplier is 1. in round 2, it's 2/3. In round 3, it's 2/4, etc.
   const tournamentMultiplier = round !== null ? 2 / (round + 1) : 1;
 
+  // winners can have a little bit more points, as a treat
   const winMultiplier = 1.15;
 
   const kConstant = 32;
 
   const marginOfVictoryMultiplier = Math.sqrt(Math.abs(scoreA - scoreB) / 2);
 
+  // expected win rate of each player, based on their current points. Players with equal rating will both have 0.5
   const expectedA = 1 / (1 + Math.pow(10, ((ratingB - ratingA) / 400)));
   const expectedB = 1 - expectedA;
 
+  // player A wins vs player B, player A gains points, playerB does not lose points
   if (scoreA > scoreB) {
     const newA = ratingA + (kConstant * winMultiplier * marginOfVictoryMultiplier * tournamentMultiplier * (1 - expectedA));
     initialScores[playerA] = newA;
@@ -68,6 +73,8 @@ const calculateTournamentRanking = (playerA, playerB, scoreA, scoreB, round) => 
   A regular match will lower the rating of the loser.
   The increase/decrease in score is based on the expected win rate of each player.
   Therefore, an upset wqill have the winner gain more points, and the loser will lose more points than usual. 
+
+  TODO: Create a calculateMatchRankingArray, or simply just adapt this to work with score arrays instead of scores
 */
 const calculateMatchRanking = (playerA, playerB, scoreA, scoreB) => {
   const expectedA = 1 / (1 + Math.pow(10, (initialScores[playerB] - initialScores[playerA]) / 400));
@@ -93,6 +100,10 @@ const calculateMatchRanking = (playerA, playerB, scoreA, scoreB) => {
   }
 }
 
+/*
+  Instead of reading from the player's score, this function reads from the last value in the player's score array. 
+  Therefore, we can see a sort-of timeline of a player's score. Player's scores at the end of a match are placed at the end of their array
+*/
 const calculateTournamentRankingArray = (playerA, playerB, scoreA, scoreB, round) => {
   // look up the rating of each player for the current match
   const ratingA = initialScoresArray[playerA][initialScoresArray[playerA].length - 1];
@@ -164,6 +175,12 @@ const matchArray = [
 
   // ["BOGDAN", "PREM", 14, 12, null],
   // ["JUSTIN", "GRACEZ", 15, 10, null],
+  // ["JUSTIN", "ANNA", 8, 15, null],
+  // ["PHILLIP", "PAUL", 14, 16, null],
+  // ["PREM", "HAYWAD", , , null],
+  // ["PAUL", "PHILLIP", 11, 15, null],
+  // ["ANNA", "PHILLIP", 10, 15, null],
+  // ["GRACE", "SAMSON", 8, 11, null],
 
 ];
 
@@ -191,20 +208,6 @@ for (const ranking in initialScores) {
 sortableScores.sort((a, b) => {return b[1] - a[1]});
 
 console.log("Final Result: ", sortableScores);
-
-// score after the game
-// newRatings(15, 13, "HAYWAD", "PREM", 1);
-// newRatings(11, 6, "SAMSON", "PREM", 1);
-// console.log("after vs: ", resultScores);
-
-// sortableScores = []
-// for (const ranking in resultScores) {
-//     sortableScores.push([ranking, resultScores[ranking]])
-// }
-
-// sortableScores.sort((a, b) => {return b[1] - a[1]});
-
-// console.log("After tournament scores: ", sortableScores);
 
 // OLD FORMULA GRAVEYARD
 // (A: win, B: loss)
