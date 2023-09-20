@@ -103,6 +103,9 @@ const calculateMatchRanking = (playerA, playerB, scoreA, scoreB) => {
 /*
   Instead of reading from the player's score, this function reads from the last value in the player's score array. 
   Therefore, we can see a sort-of timeline of a player's score. Player's scores at the end of a match are placed at the end of their array
+
+  TODO: There is a glaring issue with the algorithm: Samson ends up with more points than Haywad, despite the fact that Haywad advanced farther in the tournament. 
+  The margin of victory should matter less to the winner, or the tournamentMultiplier should be slightly larger to compensate.
 */
 const calculateTournamentRankingArray = (playerA, playerB, scoreA, scoreB, round) => {
   // look up the rating of each player for the current match
@@ -180,7 +183,7 @@ const matchArray = [
   // ["PREM", "HAYWAD", , , null],
   // ["PAUL", "PHILLIP", 11, 15, null],
   // ["ANNA", "PHILLIP", 10, 15, null],
-  // ["GRACE", "SAMSON", 8, 11, null],
+  // ["GRACEZ", "SAMSON", 8, 11, null],
 
 ];
 
@@ -198,11 +201,12 @@ for (const match of matchArray) {
   }
 }
 
+// the amount of games one has played during the tournment is 1 + number of elements in the array
 console.log("After Tournament: ", initialScoresArray);
 
 let sortableScores = []
-for (const ranking in initialScores) {
-  sortableScores.push([ranking, initialScores[ranking]])
+for (const ranking in initialScoresArray) {
+  sortableScores.push([ranking, initialScoresArray[ranking][initialScoresArray[ranking].length - 1]])
 }
 
 sortableScores.sort((a, b) => {return b[1] - a[1]});
