@@ -181,7 +181,6 @@ if __name__ == '__main__':
     tournament_labels = ("Initial Score", "Round 1", "Quarterfinals", "Semifinals G1", "Semifinals G2", "Finals G1", "Finals G2")
 
     for i in range(len(points)):
-        print(points[i])
         axis[1].bar(players, points[i], 0.5, label=tournament_labels[i], bottom=bottom)
         axis[1].set(ylim=[1490, 1620])
         bottom += points[i]
