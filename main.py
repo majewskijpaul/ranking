@@ -122,18 +122,47 @@ regularGameMatchArray = [
   ["PAUL", "PHILLIP", 11, 15, None],
   ["ANNA", "PHILLIP", 10, 15, None],
   ["GRACEZ", "SAMSON", 8, 11, None],
-  # ["TUSHAR", "ANNA", 15, 12, None],
+  ["PAUL", "HAYWAD", 10, 15, None],
+  ["TUSHAR", "ANNA", 15, 12, None],
   ["PAUL", "PHILLIP", 15, 7, None],
   ["PHILLIP", "ANNA", 15, 8, None],
   ["PREM", "ANNA", 16, 14, None],
   ["PHILLIP", "GRACEY", 19, 17, None],
   ["PREM", "PAUL", 15, 13, None],
   ["PHILLIP", "ANNA", 12, 15, None],
+  ["PREM", "TUSHAR", 15, 13, None],
   ["PAUL", "PHILLIP", 16, 14, None],
   ["PAUL", "ANNA", 13, 15, None],
   ["PREM", "ANNA", 15, 13, None],
   ["PAUL", "PHILLIP", 15, 10, None],
   ["JUSTIN", "GRACEY", 18, 16, None],
+  # Thursday September 28
+  ["PREM", "HAYWAD", 15, 12, None],
+  ["PAUL", "PHILLIP", 15, 12, None],
+  ["ANNA", "TUSHAR", 11, 15, None],
+  ["PREM", "TUSHAR", 11, 15, None],
+  ["TUSHAR", "PAUL", 10, 15, None],
+  ["PHILLIP", "ANNA", 12, 15, None],
+  ["PHILLIP", "JUSTIN", 16, 14, None],
+  ["GRACEZ", "CARMEN", 9, 11, None],
+  ["JUSTIN", "CARMEN", 11, 9, None],
+  ["GRACEZ", "GRACEY", 5, 11, None],
+  ["PREM", "HAYWAD", 15, 11, None],
+  ["HAYWAD", "PREM", 12, 15, None],
+  ["ANNA", "GRACEY", 15, 5, None],
+
+  # Friday September 29
+  ["ANNA", "BOGDAN", 14, 16, None],
+  ["PHILLIP", "JUSTIN", 11, 7, None],
+  ["PHILLIP", "ANNA", 9, 15, None],
+  ["PHILLIP", "PREM", 15, 1, None],
+  ["PHILLIP", "PREM", 15, 2, None],
+  ["GRACEY", "ANNA", 15, 11, None],
+  ["JUSTIN", "CARMEN", 7, 11, None],
+  ["ANNA", "PAUL", 15, 11, None],
+  ["JUSTIN", "TUSHAR", 7, 15, None],
+  ["JUSTIN", "ANNA", 8, 15, None],
+  ["PAUL", "TUSHAR", 9, 15, None],
 ]
 
 
@@ -263,10 +292,14 @@ if __name__ == '__main__':
         tournament_round = match[4]
         calculate_tournament_ranking_array(player_a, player_b, score_a, score_b, tournament_round)
 
+
     # After the tournament is over, the matches are where you gain and lost points
     after_tournament_rankings = {}
     for key, value in initialScoresArray.items():
         after_tournament_rankings[key] = [value[-1]]
+
+    # Add Tushar to the rankings (he didn't participate in the tournament)
+    after_tournament_rankings["TUSHAR"] = [1500]
 
     for match in regularGameMatchArray:
         player_a = match[0]
@@ -307,24 +340,24 @@ if __name__ == '__main__':
         "GRACEZ": "#7f7f7f",
         "JUSTIN": "#bcbd22",
         "SAMSON": "#17becf",
+        "TUSHAR": "#b23c17",
         "CARMEN": "#b23c17",
         "MAX": "#b23c17",
         "SHUOTONG": "#b23c17",
         "JESSIE": "#b23c17",
         "CHRISTIAN": "#b23c17"
     }
-    for index, item in enumerate(regularGameMatchArray):
+    for game_number, item in enumerate(regularGameMatchArray):
         if timesShowedUp.get(item[0], 0) == 0:
             timesShowedUp[item[0]] = 0
         if timesShowedUp.get(item[1], 0) == 0:
             timesShowedUp[item[1]] = 0
-        line, = ax.plot([index, index+1], [after_tournament_rankings[item[0]][timesShowedUp[item[0]]], after_tournament_rankings[item[0]][timesShowedUp[item[0]] + 1]], label=item[0], color=colorDict[item[0]])
-        line, = ax.plot([index, index+1], [after_tournament_rankings[item[1]][timesShowedUp[item[1]]], after_tournament_rankings[item[1]][timesShowedUp[item[1]] + 1]], label=item[1], color=colorDict[item[1]])
-        print(timesShowedUp[item[0]], after_tournament_rankings[item[0]])
+        line, = ax.plot([game_number, game_number+1], [after_tournament_rankings[item[0]][timesShowedUp[item[0]]], after_tournament_rankings[item[0]][timesShowedUp[item[0]] + 1]], label=item[0], color=colorDict[item[0]])
+        line, = ax.plot([game_number, game_number+1], [after_tournament_rankings[item[1]][timesShowedUp[item[1]]], after_tournament_rankings[item[1]][timesShowedUp[item[1]] + 1]], label=item[1], color=colorDict[item[1]])
         if timesShowedUp[item[0]] + 1 == len(after_tournament_rankings[item[0]]) - 1:
-            ax.text(index + 1.2, after_tournament_rankings[item[0]][-1] - 1.5, item[0], color=colorDict[item[0]])
+            ax.text(game_number + 1.2, after_tournament_rankings[item[0]][-1] - 1.5, item[0], color=colorDict[item[0]])
         if timesShowedUp[item[1]] + 1 == len(after_tournament_rankings[item[1]]) - 1: \
-            ax.text(index + 1.2, after_tournament_rankings[item[1]][-1] - 1.5, item[1], color=colorDict[item[1]])
+            ax.text(game_number + 1.2, after_tournament_rankings[item[1]][-1] - 1.5, item[1], color=colorDict[item[1]])
 
 
         timesShowedUp[item[0]] += 1
