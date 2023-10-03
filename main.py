@@ -20,20 +20,21 @@ tournament_scores = {}
 number_of_unique_matchups = {}
 color_dict = {
         "PREM": "#1f77b4",
-        "BOGDAN": "#ff7f0e",
-        "ANNA": "#2ca02c",
-        "PAUL": "#d62728",
-        "PHILLIP": "#9467bd",
+        "ANNA": "#ff7f0e",
+        "PAUL": "#2ca02c",
+        "PHILLIP": "#d62728",
+        "TUSHAR": "#9467bd",
         "HAYWAD": "#8c564b",
         "GRACEY": "#e377c2",
         "GRACEZ": "#7f7f7f",
         "JUSTIN": "#bcbd22",
-        "SAMSON": "#17becf",
-        "CARMEN": "#b23c17",
+        "CARMEN": "#17becf",
         "MAX": "#b23c17",
         "SHUOTONG": "#b23c17",
         "JESSIE": "#b23c17",
-        "CHRISTIAN": "#b23c17"
+        "SAMSON": "#17becf",
+        "CHRISTIAN": "#b23c17",
+        "BOGDAN": "#ff7f0e",
 }
 
 tournament_rankings_array = {
@@ -120,7 +121,7 @@ regular_match_array = [
   ["PAUL", "PHILLIP", 11, 15, None],
   ["ANNA", "PHILLIP", 10, 15, None],
   ["GRACEZ", "SAMSON", 8, 11, None],
-  # ["TUSHAR", "ANNA", 15, 12, None],
+  ["TUSHAR", "ANNA", 15, 12, None],
   ["PAUL", "PHILLIP", 15, 7, None],
   ["PHILLIP", "ANNA", 15, 8, None],
   ["PREM", "ANNA", 16, 14, None],
@@ -135,9 +136,9 @@ regular_match_array = [
   # Thursday September 28
   ["PREM", "HAYWAD", 15, 12, None],
   ["PAUL", "PHILLIP", 15, 12, None],
-  # ["ANNA", "TUSHAR", 11, 15, None],
-  # ["PREM", "TUSHAR", 11, 15, None],
-  # ["TUSHAR", "PAUL", 10, 15, None],
+  ["ANNA", "TUSHAR", 11, 15, None],
+  ["PREM", "TUSHAR", 11, 15, None],
+  ["TUSHAR", "PAUL", 10, 15, None],
   ["PHILLIP", "ANNA", 12, 15, None],
   ["PHILLIP", "JUSTIN", 16, 14, None],
   ["GRACEZ", "CARMEN", 9, 11, None],
@@ -155,12 +156,35 @@ regular_match_array = [
   ["GRACEY", "ANNA", 15, 11, None],
   ["JUSTIN", "CARMEN", 7, 11, None],
   ["ANNA", "PAUL", 15, 11, None],
-  # ["JUSTIN", "TUSHAR", 7, 15, None],
+  ["JUSTIN", "TUSHAR", 7, 15, None],
   ["JUSTIN", "ANNA", 8, 15, None],
-  # ["PAUL", "TUSHAR", 9, 15, None],
+  ["PAUL", "TUSHAR", 9, 15, None],
+  # Monday October 2
+  # Tuesday October 3
+  ["PREM", "ANNA", 15, 7, None],
+  ["PREM", "ANNA", 15, 10, None],
+#   ["NESMA", "GRACEY", 7, 11, None],
+  ["PAUL", "PHILLIP", 15, 8, None],
+  ["PHILLIP", "PAUL", 15, 10, None],
+  ["TUSHAR", "GRACEY", 15, 13, None],
+  ["PHILLIP", "ANNA", 9, 15, None],
+  ["JUSTIN", "CARMEN", 7, 11, None],
+  ["PAUL", "TUSHAR", 15, 11, None],
+  ["JUSTIN", "ANNA", 8, 15, None],
+  ["ANNA", "JUSTIN", 15, 12, None],
+  ["TUSHAR", "PAUL", 15, 10, None],
+#   ["PHILLIP", "JACK", 15, 7, None],
+#   ["PHILLIP", "GAB", 15, 6, None],
+  ["GRACEY", "CARMEN", 15, 9, None],
+#   ["GAB", "JUSTIN", 8, 15, None],
+  ["TUSHAR", "ANNA", 15, 9, None],
+  ["PAUL", "ANNA", 13, 15, None],
+  ["PAUL", "GRACEY", 15, 6, None],
+  ["JUSTIN", "GRACEY", 15, 11, None],
+#   ["GAB", "GRACEY", 15, 11, None],
 ]
 
-# static rating given to players after the tournament
+# static rating given to players after the tournament (TUSHAR was added after the fact)
 regular_match_rankings_array = {
     "BOGDAN": [1602],
     "PREM": [1564],
@@ -177,6 +201,7 @@ regular_match_rankings_array = {
     "PAUL": [1500],
     "PHILLIP": [1500],
     "SHUOTONG": [1500],
+    "TUSHAR": [1500],
 }
 
 # Calculates the ratings of all players after the tournament.
@@ -341,7 +366,7 @@ def plot_regular_match_results():
     fig, ax = plt.subplots()
     for key, value in regular_match_rankings_array.items():
         # exclude people who don't play often to avoid clutter
-        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE"]:
+        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON"]:
             ax.plot(range(len(regular_match_array) + 1), value, color=color_dict[key])
             for index, element in enumerate(value):
                 if index == len(regular_match_array):
