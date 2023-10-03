@@ -15,6 +15,12 @@ class SymmetricTuple:
     def __str__(self):
         return str(self.items)
 
+    def first_item(self):
+        return self.items[0]
+
+    def second_item(self):
+        return self.items[1]
+
 timesShowedUp = {}
 tournament_scores = {}
 number_of_unique_matchups = {}
@@ -182,6 +188,20 @@ regular_match_array = [
   ["PAUL", "GRACEY", 15, 6, None],
   ["JUSTIN", "GRACEY", 15, 11, None],
 #   ["GAB", "GRACEY", 15, 11, None],
+#   ["PREM", "GRACEY", 15, 11, None],
+#   Wednesday October 4
+  ["PAUL", "TUSHAR", 9, 15, None],
+  ["GRACEY", "ANNA", 9, 15, None],
+  ["TUSHAR", "JUSTIN", 15, 7, None],
+  ["PREM", "TUSHAR", 19, 17, None],
+  ["PREM", "TUSHAR", 15, 11, None],
+  ["PAUL", "ANNA", 15, 9, None],
+  ["JUSTIN", "GRACEZ", 7, 11, None],
+  ["JUSTIN", "CARMEN", 11, 7, None],
+#   ["GAB", "CHRISTIAN", 16, 14, None],
+  ["PREM", "JUSTIN", 15, 13, None],
+  ["ANNA", "PAUL", 12, 15, None],
+  ["PREM", "PAUL", 15, 4, None],
 ]
 
 # static rating given to players after the tournament (TUSHAR was added after the fact)
@@ -366,14 +386,14 @@ def plot_regular_match_results():
     fig, ax = plt.subplots()
     for key, value in regular_match_rankings_array.items():
         # exclude people who don't play often to avoid clutter
-        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON"]:
+        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD"]:
             ax.plot(range(len(regular_match_array) + 1), value, color=color_dict[key])
             for index, element in enumerate(value):
                 if index == len(regular_match_array):
                     ax.text(index + 0.3, element - 1.5, f"{key}\n({element.round()})", color=color_dict[key])
     plt.show()
 
-def most_common_matches():
+def most_common_matchups():
     for match in regular_match_array:
         player_a, player_b, score_a, score_b = match[0], match[1], match[2], match[3]
         match_tuple = SymmetricTuple((player_a, player_b))
@@ -382,14 +402,15 @@ def most_common_matches():
         else:
             number_of_unique_matchups[match_tuple] += 1
 
-def plot_most_common_matches():
-    most_common_matches()
+def plot_most_common_matchups():
+    most_common_matchups()
     fig, ax = plt.subplots()
     labels = []
     games = []
     for key, value in number_of_unique_matchups.items():
-        labels.append(str(key))
-        games.append(value)
+        if value > 1:
+            labels.append(f"{str(key.first_item())} VS. {str(key.second_item())}, {value}")
+            games.append(value)
 
     ax.pie(games, labels=labels)
     plt.show()
@@ -397,6 +418,6 @@ def plot_most_common_matches():
 if __name__ == '__main__':
     # plot_tournament_results()
 
-    # plot_most_common_matches()
+    # plot_most_common_matchups()
 
     plot_regular_match_results()
