@@ -266,7 +266,29 @@ regular_match_array = [
   ["PHILLIP", "PAUL", 12, 15, None],
   ["ANTHONY", "JUSTIN", 10, 15, None],
   # Friday October 13
+  ["PAUL", "JACK", 15, 3, None],
+  ["JUSTIN", "ANTHONY", 15, 10, None],
+  ["JUSTIN", "PREM", 8, 15, None],
+  ["JACK", "GAB", 15, 8, None],
+  ["PREM", "PAUL", 15, 5, None],
+  ["PREM", "ANNA", 15, 7, None],
+  ["PAUL", "ANTHONY", 15, 5, None],
+  ["PAUL", "ANNA", 14, 16, None],
+  ["PREM", "ANNA", 15, 7, None],
+  ["PREM", "GAB", 15, 4, None],
+  ["NESMA", "GRACEZ", 12, 15, None],
+  ["PAUL", "PHILLIP", 15, 11, None],
+  ["PHILLIP", "PREM", 11, 15, None],
+  ["PREM", "GRACEZ", 15, 9, None],
+  ["PREM", "ANTHONY", 15, 4, None],
+  ["GAB", "PHILLIP", 2, 15, None],
+  ["ANTHONY", "GAB", 11, 15, None],
+  ["JUSTIN", "PAUL", 7, 15, None],
   # Monday October 16
+  # Tuesday October 17
+  # Wednesday October 18
+  # Thursday October 19
+  # Friday October 20
 ]
 
 # static rating given to players after the tournament (TUSHAR was added after the fact)
@@ -455,7 +477,7 @@ def plot_regular_match_results():
     fig, ax = plt.subplots()
     for key, value in regular_match_rankings_array.items():
         # exclude people who don't play often to avoid clutter
-        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD", "NESMA", "JACK", "ANTHONY", "CARMEN"]:
+        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD", "NESMA", "ANTHONY", "CARMEN"]:
             ax.plot(range(len(regular_match_array) + 1), value, color=color_dict[key])
             for index, element in enumerate(value):
                 if index == len(regular_match_array):
@@ -512,15 +534,9 @@ def calculate_head_to_head():
         else:
             head_to_head[player_1][player_2][1 if player_a < player_b else 0] += 1
 
-def plot_head_to_head():
-    calculate_head_to_head()
-    print(head_to_head)
-
 if __name__ == '__main__':
     # plot_tournament_results()
 
     plot_most_common_matchups()
 
     # plot_regular_match_results()
-
-    # plot_head_to_head()
