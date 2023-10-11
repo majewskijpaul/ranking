@@ -30,17 +30,21 @@ color_dict = {
         "PAUL": "#2ca02c",
         "PHILLIP": "#d62728",
         "TUSHAR": "#9467bd",
-        "HAYWAD": "#8c564b",
         "GRACEY": "#e377c2",
         "GRACEZ": "#7f7f7f",
         "JUSTIN": "#bcbd22",
         "CARMEN": "#17becf",
-        "MAX": "#b23c17",
         "SHUOTONG": "#b23c17",
-        "JESSIE": "#b23c17",
-        "SAMSON": "#17becf",
         "CHRISTIAN": "#b23c17",
+        "GAB": "#8c564b",
+        "JACK": "#2f4f4f",
         "BOGDAN": "#ff7f0e",
+        "NESMA": "#2ca02c",
+        "ANTHONY": "#17becf",
+        "JESSIE": "#b23c17",
+        "MAX": "#b23c17",
+        "HAYWAD": "#8c564b",
+        "SAMSON": "#17becf",
 }
 
 tournament_rankings_array = {
@@ -169,7 +173,7 @@ regular_match_array = [
   # Tuesday October 3
   ["PREM", "ANNA", 15, 7, None],
   ["PREM", "ANNA", 15, 10, None],
-#   ["NESMA", "GRACEY", 7, 11, None],
+  ["NESMA", "GRACEY", 7, 11, None],
   ["PAUL", "PHILLIP", 15, 8, None],
   ["PHILLIP", "PAUL", 15, 10, None],
   ["TUSHAR", "GRACEY", 15, 13, None],
@@ -179,16 +183,16 @@ regular_match_array = [
   ["JUSTIN", "ANNA", 8, 15, None],
   ["ANNA", "JUSTIN", 15, 12, None],
   ["TUSHAR", "PAUL", 15, 10, None],
-#   ["PHILLIP", "JACK", 15, 7, None],
-#   ["PHILLIP", "GAB", 15, 6, None],
+  ["PHILLIP", "JACK", 15, 7, None],
+  ["PHILLIP", "GAB", 15, 6, None],
   ["GRACEY", "CARMEN", 15, 9, None],
-#   ["GAB", "JUSTIN", 8, 15, None],
+  ["GAB", "JUSTIN", 8, 15, None],
   ["TUSHAR", "ANNA", 15, 9, None],
   ["PAUL", "ANNA", 13, 15, None],
   ["PAUL", "GRACEY", 15, 6, None],
   ["JUSTIN", "GRACEY", 15, 11, None],
-#   ["GAB", "GRACEY", 15, 11, None],
-#   ["PREM", "GRACEY", 15, 11, None],
+  ["GAB", "GRACEY", 15, 11, None],
+  ["PREM", "GRACEY", 15, 11, None],
 #   Wednesday October 4
   ["PAUL", "TUSHAR", 9, 15, None],
   ["GRACEY", "ANNA", 9, 15, None],
@@ -198,10 +202,71 @@ regular_match_array = [
   ["PAUL", "ANNA", 15, 9, None],
   ["JUSTIN", "GRACEZ", 7, 11, None],
   ["JUSTIN", "CARMEN", 11, 7, None],
-#   ["GAB", "CHRISTIAN", 16, 14, None],
+  ["GAB", "CHRISTIAN", 16, 14, None],
   ["PREM", "JUSTIN", 15, 13, None],
   ["ANNA", "PAUL", 12, 15, None],
   ["PREM", "PAUL", 15, 4, None],
+  # Thursday October 5
+  ["PREM", "JUSTIN", 15, 0, None],
+  ["JUSTIN", "PREM", 6, 15, None],
+  ["JUSTIN", "ANNA", 7, 15, None],
+  ["GRACEY", "ANNA", 5, 15, None],
+  ["GRACEY", "PHILLIP", 10, 15, None],
+  ["JUSTIN", "PHILLIP", 10, 15, None],
+  ["GAB", "JACK", 11, 15, None],
+  ["GRACEY", "JACK", 15, 3, None],
+  ["TUSHAR", "PHILLIP", 15, 7, None],
+  ["ANNA", "PREM", 9, 15, None],
+  ["BOGDAN", "TUSHAR", 17, 15, None],
+  ["PAUL", "ANNA", 11, 15, None],
+  ["GAB", "PHILLIP", 8, 15, None],
+  ["PHILLIP", "PREM", 8, 15, None],
+  ["GAB", "PREM", 7, 15, None],
+  ["PREM", "PAUL", 15, 8, None],
+  ["ANNA", "PAUL", 15, 10, None],
+  # Friday October 6
+  ["PHILLIP", "JUSTIN", 15, 7, None],
+  ["JUSTIN", "GAB", 11, 3, None],
+  ["GRACEY", "PREM", 6, 15, None],
+  ["PREM", "TUSHAR", 15, 13, None],
+  ["TUSHAR", "PREM", 15, 12, None],
+  ["PHILLIP", "PREM", 7, 15, None],
+  ["PREM", "PHILLIP", 16, 14, None],
+  # Tuesday October 10
+  ["PHILLIP", "PAUL", 15, 12, None],
+  ["GAB", "JACK", 15, 12, None],
+  ["GAB", "PAUL", 10, 15, None],
+  ["NESMA", "PHILLIP", 6, 15, None],
+  ["ANNA", "PHILLIP", 15, 7, None],
+  ["PAUL", "PREM", 11, 15, None],
+  # Wednesday October 11
+  ["ANNA", "JUSTIN", 17, 15, None],
+  ["ANNA", "PREM", 15, 10, None],
+  ["PHILLIP", "PAUL", 15, 13, None],
+  ["GRACEZ", "JACK", 14, 16, None],
+  ["PAUL", "GAB", 15, 8, None],
+  ["PAUL", "NESMA", 11, 6, None],
+  ["PHILLIP", "PREM", 10, 15, None],
+  ["ANNA", "GRACEY", 15, 7, None],
+  ["PHILLIP", "ANNA", 14, 16, None],
+
+  # Thursday October 12
+  ["PHILLIP", "JUSTIN", 19, 17, None],
+  ["PREM", "ANNA", 10, 15, None],
+  ["ANNA", "PREM", 15, 12, None],
+  ["ANNA", "TUSHAR", 13, 15, None],
+  ["ANTHONY", "GRACEY", 7, 15, None],
+  ["TUSHAR", "PAUL", 15, 11, None],
+  ["PAUL", "PHILLIP", 15, 17, None],
+  ["GAB", "PHILLIP", 8, 15, None],
+  ["GAB", "ANNA", 4, 15, None],
+  ["JUSTIN", "GAB", 15, 8, None],
+  ["TUSHAR", "PREM", 15, 13, None],
+  ["GRACEY", "JUSTIN", 15, 10, None],
+  ["PHILLIP", "PAUL", 12, 15, None],
+  ["ANTHONY", "JUSTIN", 10, 15, None],
+  # Friday October 13
+  # Monday October 16
 ]
 
 # static rating given to players after the tournament (TUSHAR was added after the fact)
@@ -222,6 +287,10 @@ regular_match_rankings_array = {
     "PHILLIP": [1500],
     "SHUOTONG": [1500],
     "TUSHAR": [1500],
+    "GAB": [1500],
+    "JACK": [1500],
+    "NESMA": [1500],
+    "ANTHONY": [1500]
 }
 
 # Calculates the ratings of all players after the tournament.
@@ -386,7 +455,7 @@ def plot_regular_match_results():
     fig, ax = plt.subplots()
     for key, value in regular_match_rankings_array.items():
         # exclude people who don't play often to avoid clutter
-        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD"]:
+        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD", "NESMA", "JACK", "ANTHONY", "CARMEN"]:
             ax.plot(range(len(regular_match_array) + 1), value, color=color_dict[key])
             for index, element in enumerate(value):
                 if index == len(regular_match_array):
