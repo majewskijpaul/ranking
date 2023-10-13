@@ -473,20 +473,54 @@ def most_common_matchups():
 
 def plot_most_common_matchups():
     most_common_matchups()
+    calculate_head_to_head()
     fig, ax = plt.subplots()
     labels = []
     games = []
     for key, value in number_of_unique_matchups.items():
-        if value > 1:
-            labels.append(f"{str(key.first_item())} VS. {str(key.second_item())}, {value}")
+        if str(key.first_item()) not in head_to_head:
+            first_player_wins = head_to_head[str(key.second_item())][str(key.first_item())][1]
+            second_player_wins = head_to_head[str(key.second_item())][str(key.first_item())][0]
+        else:
+            first_player_wins = head_to_head[str(key.first_item())][str(key.second_item())][0]
+            second_player_wins = head_to_head[str(key.first_item())][str(key.second_item())][1]
+        if value > 2:
+            labels.append(f"{str(key.first_item())}({first_player_wins}) VS. {str(key.second_item())}({second_player_wins})")
             games.append(value)
 
     ax.pie(games, labels=labels)
     plt.show()
 
+head_to_head = {}
+def calculate_head_to_head():
+    for match in regular_match_array:
+        player_a, player_b, score_a, score_b, round = match
+        # player_1 will always be the alphabetical player
+        if player_a < player_b:
+            player_1, player_2 = player_a, player_b
+        else:
+            player_1, player_2 = player_b, player_a
+
+        if player_1 not in head_to_head:
+            head_to_head[player_1] = {}
+        if player_2 not in head_to_head[player_1]:
+            head_to_head[player_1][player_2] = [0, 0]
+
+        # player_a wins.
+        if score_a > score_b:
+            head_to_head[player_1][player_2][0 if player_a < player_b else 1] += 1
+        else:
+            head_to_head[player_1][player_2][1 if player_a < player_b else 0] += 1
+
+def plot_head_to_head():
+    calculate_head_to_head()
+    print(head_to_head)
+
 if __name__ == '__main__':
     # plot_tournament_results()
 
-    # plot_most_common_matchups()
+    plot_most_common_matchups()
 
-    plot_regular_match_results()
+    # plot_regular_match_results()
+
+    # plot_head_to_head()
