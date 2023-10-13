@@ -360,6 +360,15 @@ regular_match_array = [
   ["PAUL", "PREM", 11, 15, None],
   # Friday October 20
   ["PAUL", "TUSHAR", 11, 15, None],
+  ["JUSTIN", "ANTHONY", 16, 14, None],
+  ["GAB", "ANTHONY", 15, 13, None],
+  ["JUSTIN", "ANTHONY", 16, 14, None],
+  ["PREM", "PAUL", 15, 11, None],
+  ["GAB", "PHILLIP", 16, 14, None],
+  ["GAB", "ANTHONY", 15, 7, None],
+
+  # TOURNAMENT GAME
+  ["PAUL", "TUSHAR", 13, 15, None],
 
 ]
 
