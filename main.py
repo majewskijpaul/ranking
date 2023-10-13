@@ -285,10 +285,82 @@ regular_match_array = [
   ["ANTHONY", "GAB", 11, 15, None],
   ["JUSTIN", "PAUL", 7, 15, None],
   # Monday October 16
+  ["PREM", "ANNA", 15, 9, None],
+  ["ANNA", "PREM", 10, 15, None],
+  ["PAUL", "PHILLIP", 15, 10, None],
+  ["PREM", "PHILLIP", 15, 7, None],
+  ["PHILLIP", "PREM", 15, 10, None],
+  ["TUSHAR", "ANTHONY", 15, 7, None],
+  ["TUSHAR", "ANNA", 15, 9, None],
+  ["PHILLIP", "TUSHAR", 5, 15, None],
+  ["PHILLIP", "ANNA", 15, 11, None],
+  ["ANNA", "PHILLIP", 15, 10, None],
+  ["PHILLIP", "ANNA", 15, 10, None],
+  ["TUSHAR", "PREM", 10, 15, None],
+  ["PREM", "TUSHAR", 15, 8, None],
+  ["GAB", "JACK", 14, 16, None],
+  ["GRACEZ", "GAB", 17, 15, None],
   # Tuesday October 17
+  ["PHILLIP", "JUSTIN", 12, 15, None],
+  ["PAUL", "PHILLIP", 16, 18, None],
+  ["TUSHAR", "GRACEY", 15, 11, None],
+  ["TUSHAR", "ANNA", 15, 10, None],
+  ["PHILLIP", "ANNA", 15, 11, None],
+  ["ANNA", "PHILLIP", 4, 15, None],
+  ["JACK", "GAB", 15, 6, None],
+  ["PHILLIP", "GRACEY", 15, 10, None],
+  ["PAUL", "ANNA", 13, 15, None],
+  ["JUSTIN", "GAB", 15, 5, None],
+  ["JUSTIN", "GRACEY", 15, 17, None],
+  ["TUSHAR", "ANTHONY", 15, 8, None],
+  ["PAUL", "GAB", 15, 10, None],
+  ["ANTHONY", "GAB", 15, 10, None],
+  ["PAUL", "PHILLIP", 17, 15, None],
+  ["GRACEZ", "JACK", 13, 15, None],
+  ["JUSTIN", "ANTHONY", 15, 13, None],
+  ["TUSHAR", "GAB", 15, 9, None],
+  ["ANNA", "PAUL", 13, 15, None],
+  ["JUSTIN", "ANTHONY", 13, 15, None],
   # Wednesday October 18
+  ["JUSTIN", "ANTHONY", 5, 15, None],
+  ["GRACEZ", "GAB", 7, 15, None],
+  ["ANNA", "GRACEY", 15, 13, None],
+  ["PHILLIP", "PAUL", 11, 15, None],
+  ["PREM", "GRACEZ", 15, 6, None],
+  ["GAB", "JACK", 15, 13, None],
+  ["GAB", "NESMA", 15, 17, None],
+  ["PREM", "ANNA", 15, 12, None],
+  ["PREM", "PHILLIP", 15, 10, None],
+  ["TUSHAR", "PREM", 15, 2, None],
+  ["ANTHONY", "GAB", 10, 15, None],
+  ["NESMA", "GRACEZ", 6, 15, None],
+  ["ANNA", "PAUL", 15, 7, None],
+  ["JUSTIN", "PHILLIP", 12, 15, None],
+  ["PREM", "ANNA", 9, 15, None],
+  ["PREM", "GRACEY", 15, 5, None],
+  ["ANTHONY", "JUSTIN", 11, 15, None],
+  ["GAB", "GRACEY", 15, 12, None],
+  ["GAB", "GRACEY", 15, 12, None],
+  ["PHILLIP", "PAUL", 22, 20, None],
+  ["PAUL", "PHILLIP", 16, 14, None],
   # Thursday October 19
+  ["BOGDAN", "TUSHAR", 11, 6, None],
+  ["JUSTIN", "ANTHONY", 10, 15, None],
+  ["ANNA", "GRACEY", 15, 3, None],
+  ["PHILLIP", "PAUL", 11, 15, None],
+  ["ANNA", "TUSHAR", 11, 15, None],
+  ["GAB", "TUSHAR", 11, 15, None],
+  ["PREM", "TUSHAR", 17, 15, None],
+  ["GAB", "NESMA", 11, 15, None],
+  ["ANNA", "GAB", 15, 7, None],
+  ["GRACEZ", "JACK", 12, 15, None],
+  ["PAUL", "PREM", 13, 15, None],
+  ["GRACEY", "GRACEZ", 15, 11, None],
+  ["PAUL", "PHILLIP", 15, 4, None],
+  ["PAUL", "PREM", 11, 15, None],
   # Friday October 20
+  ["PAUL", "TUSHAR", 11, 15, None],
+
 ]
 
 # static rating given to players after the tournament (TUSHAR was added after the fact)
@@ -537,6 +609,6 @@ def calculate_head_to_head():
 if __name__ == '__main__':
     # plot_tournament_results()
 
-    plot_most_common_matchups()
+    # plot_most_common_matchups()
 
-    # plot_regular_match_results()
+    plot_regular_match_results()
