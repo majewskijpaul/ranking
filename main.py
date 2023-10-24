@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+import tkinter
 
 class SymmetricTuple:
     def __init__(self, items):
@@ -366,9 +367,75 @@ regular_match_array = [
   ["PREM", "PAUL", 15, 11, None],
   ["GAB", "PHILLIP", 16, 14, None],
   ["GAB", "ANTHONY", 15, 7, None],
+  ["JACK", "GAB", 13, 15, None],
+  ["NESMA", "GAB", 13, 15, None],
 
   # TOURNAMENT GAME
-  ["PAUL", "TUSHAR", 13, 15, None],
+#   ["PAUL", "TUSHAR", 13, 15, None],
+
+  # Monday October 23
+  ["JUSTIN", "GRACEY", 15, 7, None],
+  ["PHILLIP", "ANNA", 11, 15, None],
+  ["PREM", "ANNA", 15, 3, None],
+  ["PREM", "TUSHAR", 15, 5, None],
+  ["TUSHAR", "GRACEZ", 15, 3, None],
+  ["PAUL", "PHILLIP", 15, 12, None],
+  ["GRACEZ", "JACK", 9, 15, None],
+  ["GAB", "JACK", 8, 15, None],
+  ["GRACEZ", "JUSTIN", 15, 12, None],
+  ["GAB", "JUSTIN", 16, 14, None],
+  ["PHILLIP", "PAUL", 7, 15, None],
+#   ["JUSTIN", "ANTHONY", , , None],
+  ["PREM", "GAB", 15, 0, None],
+  ["PREM", "PAUL", 15, 0, None],
+  ["JACK", "PHILLIP", 7, 15, None],
+  ["PREM", "GRACEY", 15, 1, None],
+  ["ANNA", "TUSHAR", 11, 15, None],
+  ["ANTHONY", "TUSHAR", 4, 15, None],
+  ["PHILLIP", "TUSHAR", 10, 15, None],
+  ["TUSHAR", "PHILLIP", 15, 8, None],
+
+  # Tuesday October 24
+  ["JACK", "PAUL", 8, 15, None],
+  ["PAUL", "ANTHONY", 15, 8, None],
+  ["TUSHAR", "GRACEY", 15, 4, None],
+  ["PHILLIP", "TUSHAR", 13, 15, None],
+  ["PAUL", "ANNA", 16, 14, None],
+  ["PREM", "TUSHAR", 10, 15, None],
+  ["GAB", "NESMA", 15, 13, None],
+  ["GAB", "ANTHONY", 15, 9, None],
+  ["PHILLIP", "ANNA", 18, 16, None],
+  ["PREM", "ANTHONY", 15, 7, None],
+  ["GRACEZ", "CARMEN", 8, 15, None],
+  ["PAUL", "PHILLIP", 8, 15, None],
+  ["ANTHONY", "JUSTIN", 15, 7, None],
+  ["JACK", "GRACEY", 6, 15, None],
+  ["TUSHAR", "GRACEZ", 15, 11, None],
+  ["PHILLIP", "GRACEY", 12, 15, None],
+  ["ANNA", "PAUL", 15, 10, None],
+  ["ANTHONY", "ANNA", 0, 15, None],
+  ["JUSTIN", "ANTHONY", 15, 13, None],
+
+  # Wednesday October 25
+  ["PHILLIP", "PAUL", 11, 15, None],
+  ["GAB", "PAUL", 9, 15, None],
+  ["JUSTIN", "ANTHONY", 15, 17, None],
+  ["JUSTIN", "PREM", 5, 15, None],
+  ["GRACEZ", "GAB", 15, 8, None],
+  ["GRACEZ", "TUSHAR", 5, 15, None],
+  ["ANNA", "PHILLIP", 15, 10, None],
+  ["ANNA", "PHILLIP", 15, 9, None],
+  ["PREM", "TUSHAR", 15, 10, None],
+#   ["JACK", "GAB", , , None],
+  ["ANTHONY", "PAUL", 9, 15, None],
+  ["JACK", "PHILLIP", 9, 15, None],
+  ["PREM", "PHILLIP", 9, 15, None],
+  ["ANTHONY", "GAB", 15, 8, None],
+  ["PREM", "PAUL", 10, 15, None],
+  ["PREM", "ANNA", 15, 9, None],
+  ["GRACEY", "PHILLIP", 15, 11, None],
+  # Thursday October 26
+  # Friday October 27
 
 ]
 
@@ -558,12 +625,13 @@ def plot_regular_match_results():
     fig, ax = plt.subplots()
     for key, value in regular_match_rankings_array.items():
         # exclude people who don't play often to avoid clutter
-        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD", "NESMA", "ANTHONY", "CARMEN"]:
+        if key not in ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD", "NESMA", "CARMEN"]:
             ax.plot(range(len(regular_match_array) + 1), value, color=color_dict[key])
             for index, element in enumerate(value):
                 if index == len(regular_match_array):
                     ax.text(index + 0.3, element - 1.5, f"{key}\n({element.round()})", color=color_dict[key])
     plt.show()
+    # plt.savefig("NewChart.png")
 
 def most_common_matchups():
     for match in regular_match_array:
@@ -581,6 +649,7 @@ def plot_most_common_matchups():
     labels = []
     games = []
     for key, value in number_of_unique_matchups.items():
+        # if str(key.first_item()) not in ["HAYWAD", "SAMSON"] or key.second_item() not in ["HAYWAD", "SAMSON"]:
         if str(key.first_item()) not in head_to_head:
             first_player_wins = head_to_head[str(key.second_item())][str(key.first_item())][1]
             second_player_wins = head_to_head[str(key.second_item())][str(key.first_item())][0]
