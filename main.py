@@ -48,6 +48,7 @@ color_dict = {
         "HAYWAD": "#8c564b",
         "SAMSON": "#17becf",
         "WILSON": "#b23c17",
+        "CERI": "#b23c17",
 }
 
 name_abbrev = {
@@ -71,7 +72,9 @@ name_abbrev = {
     "MAX": "MAX",
     "HAYWAD": "HAY",
     "SAMSON": "SAM",
-    "WILSON": "WIL"
+    "WILSON": "WIL",
+    "CERI": "CERI",
+    "JEREMY": "JER",
 }
 
 tournament_rankings_array = {
@@ -1050,9 +1053,9 @@ regular_match_array = [
   ["PAUL", "PHILLIP", 15, 6, None],
   ["JEREMY", "PAUL", 15, 6, None],
   ["JUSTIN", "TUSHAR", 14, 16, None],
-  ["JEREMY", "PHILLIP", 13, 15],
-  ["PHILLIP", "JEREMY", 13, 15],
-  ["JEREMY", "PHILLIP", 15, 12],
+  ["JEREMY", "PHILLIP", 13, 15, None],
+  ["PHILLIP", "JEREMY", 13, 15, None],
+  ["JEREMY", "PHILLIP", 15, 12, None],
   ["GRACEZ", "JACK", 17, 15, None],
   ["GRACEZ", "PHILLIP", 7, 15, None],
   ["GRACEZ", "JEREMY", 12, 15, None],
@@ -1542,8 +1545,8 @@ def calculate_head_to_head():
 if __name__ == '__main__':
     # plot_tournament_results()
 
-    # plot_most_common_matchups_bar()
+    plot_most_common_matchups_bar()
 
     # plot_most_common_matchup_pie()
 
-    plot_regular_match_results()
+    # plot_regular_match_results()
