@@ -518,6 +518,8 @@ def calculate_head_to_head():
     for match in regular_match_array:
         player_a, player_b, score_a, score_b, round = match
         # player_1 will always be the alphabetical player
+        # for example, Alice vs Bob (player_a vs player_b) => Alice (player_1), Bob (player_2)
+        # alternatively, Bob vs Alice (player_a vs player_b) => Bob (player_2), Alice (player_1)
         if player_a < player_b:
             player_1, player_2 = player_a, player_b
         else:
