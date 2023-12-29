@@ -1542,11 +1542,46 @@ def calculate_head_to_head():
         else:
             head_to_head[player_1][player_2][1 if player_a < player_b else 0] += 1
 
+def calculate_number_of_matchups():
+    fig, ax = plt.subplots()
+    games_counter_object = {}
+    percent_games_played_object = {}
+    total_games_recorded = len(regular_match_array)
+    labels = []
+    values = []
+    colors = []
+    exclusion_array = ["MAX", "SHUOTONG", "BOGDAN", "CHRISTIAN", "JESSIE", "SAMSON", "HAYWAD", "NESMA", "CARMEN", "CERI"]
+    for match in regular_match_array:
+        player_a, player_b, score_a, score_b, round = match
+        if player_a not in games_counter_object:
+            games_counter_object[player_a] = 1
+        else:
+            games_counter_object[player_a] += 1
+        if player_b not in games_counter_object:
+            games_counter_object[player_b] = 1
+        else:
+            games_counter_object[player_b] += 1
+
+    sorted_dict = dict(sorted(games_counter_object.items(), key=lambda item: item[1], reverse=True))
+    for key, value in sorted_dict.items():
+        if key not in exclusion_array:
+            colors.append(color_dict[key])
+            new_value = (value/total_games_recorded) * 100
+            rounded_number = "{:.1f}".format(new_value)
+            labels.append(f"{key}: {value} games, ({rounded_number}%)")
+            percent_games_played_object[key] = (value/total_games_recorded) * 100
+            values.append((value/total_games_recorded) * 100)
+
+    ax.pie(values, labels=labels, colors=colors)
+    plt.show()
+
 if __name__ == '__main__':
     # plot_tournament_results()
 
-    plot_most_common_matchups_bar()
+    # plot_most_common_matchups_bar()
 
     # plot_most_common_matchup_pie()
 
     # plot_regular_match_results()
+
+    calculate_number_of_matchups()
